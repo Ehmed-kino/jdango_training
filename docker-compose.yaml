@@ -1,0 +1,14 @@
+version: '3'
+services:
+  db:
+    image: library/postgres
+    volumes:
+      - ./data/db:/var/lib/postgresql/data:rw
+    #   - ./data/initdb.sql:/docker-entrypoint-initdb.d
+    environment:
+      POSTGRES_DB: docker_django_test_db
+      POSTGRES_USER: docker_django_test_user
+      POSTGRES_PASSWORD: docker_django_test_pass
+      pool: 5
+    ports:
+      - "5432:5432"
